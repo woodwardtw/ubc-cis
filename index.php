@@ -1,0 +1,77 @@
+<?php 
+/*
+Plugin Name: UBC CIS 
+Plugin URI:  https://github.com/
+Description: 
+Version:     1.0
+Author:      Tom Woodward
+Author URI:  https://bionicteaching.com
+License:     GPL2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Domain Path: /languages
+Text Domain: my-toolset
+
+*/
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+
+add_action('wp_enqueue_scripts', 'prefix_load_scripts');
+
+function prefix_load_scripts() {                           
+    $deps = array('jquery');
+    $version= '1.0'; 
+    $in_footer = true;    
+    wp_enqueue_script('ubc-cis-main-js', plugin_dir_url( __FILE__) . 'js/ubc-cis-main.js', $deps, $version, $in_footer); 
+    wp_enqueue_style( 'ubc-cis-main-css', plugin_dir_url( __FILE__) . 'css/ubc-cis-main.css');
+}
+
+
+
+
+
+//ACF SAVE
+add_filter('acf/settings/save_json', 'ubc_cis_json_save_point');
+ 
+function ubc_cis_json_save_point( $path ) {
+    
+    // update path
+    $path = get_stylesheet_directory() . '/acf-json';
+    
+    
+    // return
+    return $path;
+    
+}
+
+
+add_filter('acf/settings/load_json', 'ubc_cis_json_load_point');
+
+function ubc_cis_json_load_point( $paths ) {
+    
+    // remove original path (optional)
+    unset($paths[0]);
+    
+    
+    // append path
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    
+    
+    // return
+    return $paths;
+    
+}
+
+
+//LOGGER -- like frogger but more useful
+
+if ( ! function_exists('write_log')) {
+   function write_log ( $log )  {
+      if ( is_array( $log ) || is_object( $log ) ) {
+         error_log( print_r( $log, true ) );
+      } else {
+         error_log( $log );
+      }
+   }
+}
+
+  //print("<pre>".print_r($a,true)."</pre>");
