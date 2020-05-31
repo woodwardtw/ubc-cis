@@ -27,11 +27,13 @@ function ubc_cis_load_scripts() {
 
  add_action( 'admin_enqueue_scripts', 'ubc_cis_load_admin_style' );
  
- function ubc_cis_load_admin_style() {
-        wp_register_style( 'admin_css', plugin_dir_url( __FILE__ )  . 'css/admin-style.css', false, '1.0.0' );
-//OR
-        wp_enqueue_style( 'admin_css', plugin_dir_url( __FILE__ )  . 'css/admin-style.css', false, '1.0.0' );
-       }
+function ubc_cis_load_admin_style() {
+    $deps = array('jquery');
+    $version= '1.0'; 
+    $in_footer = true;    
+    wp_enqueue_style( 'ubc-cis-admin-css', plugin_dir_url( __FILE__ )  . 'css/ubc-cis-admin.css', false, '1.0.0' );
+    wp_enqueue_script('ubc-cis-admin-js', plugin_dir_url( __FILE__) . 'js/ubc-cis-admin.js', $deps, $version, $in_footer); 
+}
 
 
 
