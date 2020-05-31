@@ -17,7 +17,6 @@ jQuery(document).ready(function() {
       jQuery(this).val(trimmed + " ");
     }
     else {
-       console.log(words)
       usedDisplay.innerHTML = words;
       //jQuery('#word_left').text(limit-words);
     }

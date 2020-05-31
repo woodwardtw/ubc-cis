@@ -36,13 +36,44 @@ function ubc_cis_load_admin_style() {
 }
 
 //CLEAN UP BACKEND FOR USERS 
-
+add_action( 'admin_menu', 'ubc_cis_remove_menus', 999 );
+ 
+function  ubc_cis_remove_menus(){
+  $roles = ubc_cis_get_current_user_roles();
+  var_dump($roles);
+  if( in_array("cis_author", $roles) ) {      
+      remove_menu_page( 'index.php' );                  //Dashboard
+      remove_menu_page( 'jetpack' );                    //Jetpack* 
+      //remove_menu_page( 'edit.php' );                   //Posts
+      remove_menu_page( 'upload.php' );                 //Media
+      //remove_menu_page( 'edit.php?post_type=page' );    //Pages
+      remove_menu_page( 'edit-comments.php' );          //Comments
+      //remove_menu_page( 'themes.php' );                 //Appearance
+      //remove_menu_page( 'plugins.php' );                //Plugins
+      //remove_menu_page( 'users.php' );                  //Users
+      remove_menu_page( 'tools.php' );                  //Tools
+      remove_menu_page( 'options-general.php' );        //Settings
+    }
+}
 
 //create user type 
 function ubc_cis_add_roles_on_plugin_activation() {
-    add_role( 'custom_role', 'CIS Author', array( 'read' => true, 'level_3' => true ) );
+    add_role( 'cis_author', 'CIS Author', get_role( 'author' )->capabilities  );
 }
 register_activation_hook( __FILE__, 'ubc_cis_add_roles_on_plugin_activation' );
+
+
+function ubc_cis_get_current_user_roles() {
+ if( is_user_logged_in() ) {
+   $user = wp_get_current_user();
+   $roles = ( array ) $user->roles;
+   return $roles; // This returns an array
+   // Use this to return a single value
+   // return $roles[0];
+ } else {
+ return array();
+ }
+}
 
 
 
