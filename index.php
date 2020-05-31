@@ -15,9 +15,9 @@ Text Domain: my-toolset
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-add_action('wp_enqueue_scripts', 'prefix_load_scripts');
+add_action('wp_enqueue_scripts', 'ubc_cis_load_scripts');
 
-function prefix_load_scripts() {                           
+function ubc_cis_load_scripts() {                           
     $deps = array('jquery');
     $version= '1.0'; 
     $in_footer = true;    
@@ -25,6 +25,13 @@ function prefix_load_scripts() {
     wp_enqueue_style( 'ubc-cis-main-css', plugin_dir_url( __FILE__) . 'css/ubc-cis-main.css');
 }
 
+ add_action( 'admin_enqueue_scripts', 'ubc_cis_load_admin_style' );
+ 
+ function ubc_cis_load_admin_style() {
+        wp_register_style( 'admin_css', plugin_dir_url( __FILE__ )  . 'css/admin-style.css', false, '1.0.0' );
+//OR
+        wp_enqueue_style( 'admin_css', plugin_dir_url( __FILE__ )  . 'css/admin-style.css', false, '1.0.0' );
+       }
 
 
 
