@@ -23,8 +23,8 @@
         },
         {
             "key": "field_5ed26895f8673",
-            "label": "Dates",
-            "name": "dates",
+            "label": "Registration Dates",
+            "name": "registration_dates",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -36,14 +36,65 @@
             },
             "layout": "block",
             "sub_fields": []
+        },
+        {
+            "key": "field_5ed39eec5a616",
+            "label": "Course Dates",
+            "name": "course_dates",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5ed39efa5a617",
+                    "label": "Course Start Date",
+                    "name": "course_start_date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_5ed39f0d5a618",
+                    "label": "Course End Date",
+                    "name": "course_end_date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1
+                }
+            ]
         }
     ],
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "post_category",
                 "operator": "==",
-                "value": "post"
+                "value": "category:course"
             }
         ]
     ],
@@ -55,5 +106,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590847981
+    "modified": 1590927159
 }
