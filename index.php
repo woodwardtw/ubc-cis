@@ -35,10 +35,18 @@ function ubc_cis_load_admin_style() {
     wp_enqueue_script('ubc-cis-admin-js', plugin_dir_url( __FILE__) . 'js/ubc-cis-admin.js', $deps, $version, $in_footer); 
 }
 
+//CLEAN UP BACKEND FOR USERS 
+
+
+//create user type 
+function ubc_cis_add_roles_on_plugin_activation() {
+    add_role( 'custom_role', 'CIS Author', array( 'read' => true, 'level_3' => true ) );
+}
+register_activation_hook( __FILE__, 'ubc_cis_add_roles_on_plugin_activation' );
 
 
 
-//ACF SAVE
+//ACF SAVE and LOAD JSON
 add_filter('acf/settings/save_json', 'ubc_cis_json_save_point');
  
 function ubc_cis_json_save_point( $path ) {
