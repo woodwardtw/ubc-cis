@@ -7,7 +7,7 @@
             "label": "Short Course Description",
             "name": "short_course_description",
             "type": "textarea",
-            "instructions": "Please limit your entry to X characters.",
+            "instructions": "Please limit your entry to <span id=\"short-desc-limit\">200<\/span> words. You've used <span id=\"short-desc-limit-used\">0<\/span> words so far.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -17,7 +17,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": 1000,
+            "maxlength": "",
             "rows": "",
             "new_lines": "wpautop"
         },
@@ -175,5 +175,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1590929402
+    "modified": 1590931075
 }
