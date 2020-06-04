@@ -75,6 +75,19 @@ function ubc_cis_get_current_user_roles() {
 }
 
 
+//append content to filter
+function ubc_cis_add_content($content){
+  global $post;
+  $post_id = $post->ID;
+  $course_dates = get_field('course_dates',$post_id); // 'our_services' is your parent group
+  $course_start_date = $course_dates['course_start_date'];
+
+  return $content . $course_start_date;
+}
+
+add_filter( 'the_content', 'ubc_cis_add_content', 1);
+
+
 
 //ACF SAVE and LOAD JSON
 add_filter('acf/settings/save_json', 'ubc_cis_json_save_point');
@@ -104,6 +117,8 @@ function ubc_cis_json_load_point( $paths ) {
     return $paths;
     
 }
+
+
 
 
 //LOGGER -- like frogger but more useful
