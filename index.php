@@ -40,7 +40,6 @@ add_action( 'admin_menu', 'ubc_cis_remove_menus', 999 );
  
 function  ubc_cis_remove_menus(){
   $roles = ubc_cis_get_current_user_roles();
-  var_dump($roles);
   if( in_array("cis_author", $roles) ) {      
       remove_menu_page( 'index.php' );                  //Dashboard
       remove_menu_page( 'jetpack' );                    //Jetpack* 
