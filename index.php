@@ -74,6 +74,16 @@ function ubc_cis_get_current_user_roles() {
  }
 }
 
+//remove course posts from blog page 
+
+function ubc_cis_exclude_courses($query) {
+  if ( $query->is_home() ) {
+    $query->set('cat', '-###'); //REPLACE WITH CAT ID FOR COURSES and then turn on filter
+  }
+    return $query;
+  }
+//add_filter('pre_get_posts', 'ubc_cis_exclude_courses');
+
 
 //append content to filter
 function ubc_cis_add_content($content){
@@ -134,3 +144,4 @@ if ( ! function_exists('write_log')) {
 }
 
   //print("<pre>".print_r($a,true)."</pre>");
+
