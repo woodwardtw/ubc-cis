@@ -1,3 +1,7 @@
 .acf-label {
 	font-size: 1.2em;
 }
+
+.hide {
+	display: none;
+}

@@ -21,5 +21,8 @@ jQuery(document).ready(function() {
       //jQuery('#word_left').text(limit-words);
     }
   });
+  if (document.getElementById('layout')){
+  	document.getElementById('layout').classList.add('hide');
+  }
 }); 
 
