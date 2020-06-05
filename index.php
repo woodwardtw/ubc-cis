@@ -85,6 +85,47 @@ function ubc_cis_exclude_courses($query) {
 //add_filter('pre_get_posts', 'ubc_cis_exclude_courses');
 
 
+
+//THIS AUTO PUTS NEW POSTS IN THE COURSE CATEGORY IF YOU'RE cis_author
+add_filter( 'load-post-new.php', 'ubc_cis_auto_cat_new' );
+function ubc_cis_auto_cat_new()
+{
+    $post_type = 'post';
+    if ( isset( $_REQUEST['post_type'] ) ) {
+        $post_type = $_REQUEST['post_type'];
+    }
+
+    // Only do this for posts
+    if ( 'post' != $post_type ) {
+        return;
+    }
+
+    $user = wp_get_current_user();
+   if (in_array( 'cis_author', (array) $user->roles )  ) {
+        add_action( 'wp_insert_post', 'update_post_terms' );
+        return;
+    }
+  }
+
+
+
+ 
+function update_post_terms( $post_id ) {
+  var_dump($post_id);
+    $post = get_post( $post_id );
+    if ( $post->post_type != 'post' )
+        return;
+
+    // add a category
+
+    $newcat  = get_term_by( 'name', 'Course', 'category' );
+    wp_set_post_categories( $post_id, $newcat );
+}
+
+
+
+
+
 //append content to filter
 function ubc_cis_add_content($content){
   global $post;
@@ -96,6 +137,10 @@ function ubc_cis_add_content($content){
 }
 
 add_filter( 'the_content', 'ubc_cis_add_content', 1);
+
+
+
+
 
 
 
