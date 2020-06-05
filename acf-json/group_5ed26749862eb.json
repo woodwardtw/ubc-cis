@@ -237,7 +237,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "32",
+                        "width": "24",
                         "class": "",
                         "id": ""
                     },
@@ -258,7 +258,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "32",
+                        "width": "24",
                         "class": "",
                         "id": ""
                     },
@@ -277,7 +277,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "32",
+                        "width": "24",
                         "class": "",
                         "id": ""
                     },
@@ -305,6 +305,105 @@
                     "return_format": "value",
                     "ajax": 0,
                     "placeholder": ""
+                },
+                {
+                    "key": "field_5ed991fd7dbe0",
+                    "label": "Course Newsletter",
+                    "name": "course_newsletter",
+                    "type": "radio",
+                    "instructions": "Course has a newsletter or mailing list.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "24",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "Yes": "Yes",
+                        "No": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5ed992577306a",
+            "label": "Course Artefacts",
+            "name": "course_artefacts",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5ed992767306b",
+                    "label": "Artefact Title",
+                    "name": "artefact_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5ed992c37306c",
+                    "label": "Artefact Link",
+                    "name": "artefact_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ed992df7306d",
+                    "label": "Artefact Description",
+                    "name": "artefact_description",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
                 }
             ]
         }
@@ -341,5 +440,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591313667
+    "modified": 1591317276
 }
