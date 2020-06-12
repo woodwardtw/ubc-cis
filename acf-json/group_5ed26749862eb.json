@@ -415,6 +415,13 @@
                 "operator": "==",
                 "value": "category:course"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "course"
+            }
         ]
     ],
     "menu_order": 0,
@@ -440,5 +447,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591317276
+    "modified": 1591369869
 }
